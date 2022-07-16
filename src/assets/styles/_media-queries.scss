@@ -1,0 +1,20 @@
+//  map holding breakpoint values
+// the breakpoints end must not be used.
+$breakpoints: (
+  xs : 0px,
+  sm : 680px,
+  md: 960px,
+  xl: 1200px,
+  end: 2000px
+);
+
+
+//  mixin to print out media queries (based on map keys passed)
+@mixin media($keys...){
+  @each $key in $keys {
+    @media (min-width: map-get($breakpoints, $key))
+    {
+      @content
+    }
+  }
+}
